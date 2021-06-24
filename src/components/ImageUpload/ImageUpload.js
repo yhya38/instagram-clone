@@ -5,7 +5,7 @@ import { storage, db } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import firebase from "firebase";
 
-function ImageUpload() {
+function ImageUpload({ close }) {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
@@ -50,7 +50,8 @@ function ImageUpload() {
             setCaption(" ");
             setImage(null);
             setProgress(0);
-            alert('Successfully uploaded..')
+            alert("Successfully uploaded..");
+            close();
           });
       }
     );
@@ -71,7 +72,7 @@ function ImageUpload() {
           label="caption"
         />
 
-        <TextField type="file"  onChange={handleChange} />
+        <TextField type="file" onChange={handleChange} />
         <Button
           disabled={!image}
           color="primary"
