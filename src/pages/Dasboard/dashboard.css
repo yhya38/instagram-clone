@@ -20,11 +20,18 @@
     margin-top: -40px;
 }
 
+.imageUploader_wrapper {
+    height: max-content;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 @media screen and (min-width:760px){
     .dashboard_post_container {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
     }
+    
 
 }
