@@ -4,7 +4,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [posts, setPosts] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState();
   const [username, setUsername] = useState("");
 
   const signup = (email, password) => {
@@ -36,14 +36,16 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          post: doc.data(),
-        }))
-      );
-    });
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
+      });
   }, []);
 
   useEffect(() => {
@@ -59,13 +61,14 @@ export function AuthProvider({ children }) {
           });
         }
       } else {
-        setCurrentUser(null);
+        setCurrentUser(user);
+        // setCurrentUser(null);
       }
     });
     return () => {
       unsubscribe();
     };
-  }, [currentUser]);
+  }, [username, currentUser]);
 
   const value = {
     posts,

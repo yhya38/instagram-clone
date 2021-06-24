@@ -14,12 +14,16 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    signup(state.email, state.password)
-      .then((ref) => {
-        history.push("/");
-      })
-      .catch((error) => alert(error.message));
+    if (!username) {
+      alert('please enter your name')
+    } else {
+       signup(state.email, state.password)
+         .then((ref) => {
+           history.push("/");
+         })
+         .catch((error) => alert(error.message));
+    }
+   
   };
   return (
     <div className="login">

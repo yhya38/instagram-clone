@@ -10,18 +10,19 @@ import { useAuth } from "./contexts/AuthContext";
 
 function App() {
   const { currentUser } = useAuth();
+  console.log(currentUser)
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signUp" component={SignUp} />
-          {/* {currentUser ? (
+          {currentUser ? (
             <Route exact path="/" component={Dashboard} />
           ) : (
             <Redirect to="/login" />
-          )} */}
-          <Route exact path="/" component={Dashboard} />
+          )}
+          {/* <Route exact path="/" component={Dashboard} /> */}
         </Switch>
       </Router>
     </div>

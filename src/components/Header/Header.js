@@ -19,7 +19,12 @@ function Header() {
         alt="insta logo"
         className="header_image"
       />
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ cursor: "pointer" }}
+        onClick={handleSubmit}
+      >
         Log out
       </Button>
     </div>
