@@ -7,6 +7,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 0px 20px;
 }
 .login_wrapper {
   max-width: 400px;
